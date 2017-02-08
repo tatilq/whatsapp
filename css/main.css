@@ -68,14 +68,25 @@ aside.w-contacts header {
 .w-chat-messages .avatar img {
 	float: left;
 }
-
+#img_profile:hover
+{
+	width: 55px;
+	height: 55px;
+	/*-webkit-filter: grayscale(100%);*/
+	/*-webkit-filter: hue-rotate(150deg);*/
+	/*-webkit-filter: grayscale(100%) brightness(-25%) contrast(250%);*/
+	 -webkit-filter: grayscale(100%);
+	/*-webkit-filter: sepia(100%);*/
+}
 .avatar img {
-	width: 40px;
-	height: 40px;
+	width: 50px;
+	height: 50px;
 	border-radius: 50%;
 	margin-right: 10px;
 }
-
+.avatar img:hover{
+	font-size: 50px;
+}
 .avatar p {
 	margin-top:5px;
 	font-size: 14px;

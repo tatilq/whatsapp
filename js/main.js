@@ -8,7 +8,7 @@ function Chat(_nombre, _imagen,_ultimoMensaje,_horaUltimoMensaje )
 	this.misChats= [];
 	this.mishoras=[];
 }
-//se crea 
+//se crea un arreglo de instancias 
 var dataListaChats = [
 	new Chat("Lisbeth", 'http://facebookportadas.com/imagenes/notodoloquesedice.jpg', "Bien tu¿","11:45 p.m"),
 	new Chat("Mariana", 'http://k37.kn3.net/DCCE035AA.jpg', "masosmenos ,ya estare mejor","10:15 p.m"),
@@ -159,7 +159,7 @@ function fileSelect(evt)
 	  reader.onload = (function(theFile) {
         return function(e) {
           contImg.innerHTML="";
-          contImg.innerHTML = ['<img  onclick="cambiarFotoPerfil()" src="', e.target.result,
+          contImg.innerHTML = ['<img  onclick="cambiarFotoPerfil()" id="img_profile" onmouseover="cambiarFotoPerfil()" src="', e.target.result,
                             '" title="', escape(theFile.name), '"/>'].join('');
         };
       })(f);
