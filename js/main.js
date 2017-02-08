@@ -7,6 +7,15 @@ function Chat(_nombre, _imagen,_ultimoMensaje,_horaUltimoMensaje )
 	this.horaUltimoMensaje = _horaUltimoMensaje;
 	this.misChats= [];
 	this.mishoras=[];
+	this.getUltimoMensaje=function()
+	{
+		this.ultimoMensaje=this.misChats[this.misChats.length-1]
+		return this.ultimoMensaje;
+	};
+	this.getUltimaHora= function(){
+		this.horaUltimoMensaje=this.horaUltimoMensaje[this.mishoras.length-1]
+		return this.horaUltimoMensaje;
+	}
 }
 //se crea un arreglo de instancias 
 var dataListaChats = [
@@ -123,6 +132,9 @@ function crearMensajeOut(_mensaje , _nombreChat)
 			dataListaChats[i].mishoras.push(getDateMessage());//agrega 
 		}
 	}
+
+	//actualizarUltimoChat(_nombreChat , _mensaje);
+
 }
 
 function mensajesChat(_mensajesIn,_name,_horas)
@@ -219,6 +231,29 @@ function onMensajeKey(evt)
 
 		_mensajeInput.value='';
 	}
+}
+
+function actualizarUltimoChat(_contactName, _mensaje)
+{
+	var listaChats= document.getElementById("lista-chats");
+	//console.log(listaChats.getElementsByTagName("h4")[0].textContent);
+	//console.log(listaChats.getElementsByTagName("p")[0].textContent);
+	//console.log(listaChats.getElementsByClassName("time")[0].textContent)
+		
+	
+		for (var i=0; i< listaChats.childNodes.length;i++)
+		{
+			
+			if(listaChats.getElementsByTagName("h4")[i].textContent==_contactName)
+			{
+				console.log(_contactName);
+			}
+			else
+			{
+				console.log("nada");
+			}
+		
+		}
 }
 
 //FUNCION QUE CREA CHATS
