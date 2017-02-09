@@ -1,4 +1,5 @@
-//Parte Lógica
+/*********************************************+------------------PARTE LOGICA-----------------*////////////////////////77
+////////////////////////////CONSTRUCTOR CHAT DE CUAL SE INSTANCIARAN OBJETOS///////////////////////////////////7
 function Chat(_nombre, _imagen,_ultimoMensaje,_horaUltimoMensaje )
 {
 	this.nombre =  _nombre;
@@ -7,17 +8,8 @@ function Chat(_nombre, _imagen,_ultimoMensaje,_horaUltimoMensaje )
 	this.horaUltimoMensaje = _horaUltimoMensaje;
 	this.misChats= [];
 	this.mishoras=[];
-	this.getUltimoMensaje=function()
-	{
-		this.ultimoMensaje=this.misChats[this.misChats.length-1]
-		return this.ultimoMensaje;
-	};
-	this.getUltimaHora= function(){
-		this.horaUltimoMensaje=this.horaUltimoMensaje[this.mishoras.length-1]
-		return this.horaUltimoMensaje;
-	}
 }
-//se crea un arreglo de instancias 
+///////////////////////////7SE CREA UN ARREGLO DE INSTANCIAS DE OBJETOS///////////////////////////////////7
 var dataListaChats = [
 	new Chat("Lisbeth", 'http://facebookportadas.com/imagenes/notodoloquesedice.jpg', "Bien tu¿","11:45 p.m"),
 	new Chat("Mariana", 'http://k37.kn3.net/DCCE035AA.jpg', "masosmenos ,ya estare mejor","10:15 p.m"),
@@ -29,15 +21,17 @@ var dataListaChats = [
 	new Chat("Yolanda Daza", 'image/andrea.jpg',"Nada, masomenos tu??","01/02/2017"),
 	new Chat("Lupita Chavez", 'http://facebookportadas.com/imagenes/notodoloquesedice.jpg',"jje sera para la otraa","06/02/2017")];
 
-//Parte Visual
+
+/**********************************//////////////////////-------------PARTE VISUAL------/////////////////////7/////////////////////////////
+
 var liListItem=null;
 var srcImagen=document.getElementById('img_profile');
-//funcion que se inicia apenas se recrague la pagina
+/////////////////////////////////////////////////////FUNCION QUE SE INICIA APENAS SE CARGUE LA PAGINA/////////////////////////////////////////7
 function init() {
 
 	initChatList();
 }
-//funcion que inicia todos los chats 'los crea'
+/////////////////////////////////////////7/funcion que inicia todos los chats 'los crea'/////////////////////////////////77/////////////////
 function initChatList(ultMensaje) {
 	var elListaChats = document.getElementById("lista-chats");//ul con los chats
 	for (var i in dataListaChats) {
@@ -51,7 +45,7 @@ function initChatList(ultMensaje) {
 	}
 	setEventsChatList();
 }
-//funcion que actualiza los eventos de los chats
+///////////////////////////////////////funcion que actualiza los eventos de los chats/////////////////////////////////////////////////////7///
 function setEventsChatList() {
 	var listaChats = document.getElementById('lista-chats');//ul de los chats
 	var arrListItems = listaChats.getElementsByTagName('li');
@@ -59,6 +53,7 @@ function setEventsChatList() {
 		arrListItems[i].addEventListener('click', onChatItemClick);
 	}
 }
+///////////////////////////////////////funcion que recibe los datos del chat al hacer click y llama a la funcion actualizarcabecera/////////////////////////////////////////
 function onChatItemClick(evt) {
 	/*currentTarget:- Devuelve el elemento del DOM que está disparando el evento actualmente (no nesariamente 
 	el elemento que disparó el evento, ya que puede ser un disparo debido a burbujeo)*/
@@ -71,9 +66,9 @@ function onChatItemClick(evt) {
 	
 	
 	actualizarCabeceraChat(contactName, imgURL, "Conectado");
-	crearMensajeIn(contactName, ultMensaje , ultVez);
+	//crearMensajeIn(contactName, ultMensaje , ultVez);
 }
-//funcion que recibe como parametro la infor de cada lista de chats y actualiza la cabecera
+////////////////////////////////////funcion que recibe como parametro la infor de cada lista de chats y actualiza la cabecera///////////////////////////
 function actualizarCabeceraChat(_contactName, _imageURL, _estado) {
 	var chatHeader = document.getElementById("chat-header");//es la cabecera del chats
 	chatHeader.getElementsByClassName('w-contact-name')[0].innerHTML = _contactName;
@@ -94,7 +89,7 @@ function actualizarCabeceraChat(_contactName, _imageURL, _estado) {
 		}
 	}
 }
-//FUNCION QUE CREA MENSAJES
+/////////////////////////////////////////////////////////////FUNCION QUE CREA MENSAJES DE TIPO IN///////////////////////////////////////////////7
 function crearMensajeIn(_contactName , _ultMensaje , _ultVez)
 {
 	//mensajes que me nandan 
@@ -110,6 +105,7 @@ function crearMensajeIn(_contactName , _ultMensaje , _ultVez)
 	elChat.innerHTML+=htmlMensajeIn;
 	elChat.scrollTop =elChat.scrollHeight;//para que el scroll se baje hasta el ultimo mensaje
 }
+////////////////////////////////////////////////////////////FUNCION QUE CREA UN MENSJES DE TIPO OUT///////////////////////////////////////////////7
 function crearMensajeOut(_mensaje , _nombreChat)
 {
 	//mensajes que mando yo
@@ -133,10 +129,10 @@ function crearMensajeOut(_mensaje , _nombreChat)
 		}
 	}
 
-	//actualizarUltimoChat(_nombreChat , _mensaje);
+	actualizarUltimoChat(_nombreChat , _mensaje);
 
 }
-
+////////////////////////////////////////77//////////////7FUNCION QUE DIBUJA LOS MENSAJES DEL CHAT////////////////////////////////////////////77
 function mensajesChat(_mensajesIn,_name,_horas)
 {
 	var divchat= document.getElementById("chat");
@@ -148,7 +144,7 @@ function mensajesChat(_mensajesIn,_name,_horas)
 		'</div>';
 		divchat.innerHTML += htmlMensajeIn;
 }
-//funcion para cambiar la foto de perfil
+///////////////////////////////////////////////////////////FUNCION QUE CAMBIAR LA FOTO D EPERFIL///////////////////////////////////////////7
 function cambiarFotoPerfil()
 {
 	var divCargaImagen=document.getElementById("divCargaImagen");
@@ -158,6 +154,7 @@ function cambiarFotoPerfil()
 	document.getElementById('file').addEventListener('change',fileSelect);
 	
 }
+/////////////////////////////////////////////////7777//FUNCION QUE ME PERMITE SELECCIONAR UN ARCHIVO MEDIANTE UN OBJ FILE///////////////////777
 function fileSelect(evt)
 {
 	var files = evt.target.files; // hace referencia  a lo archivos cargados desde mi input
@@ -179,7 +176,7 @@ function fileSelect(evt)
       divCargaImagen.innerHTML='';
     }
 }
-//funcion para buscar en la lista de contactos algun chat
+/////////////////////////////////////////////////////7FUNCION QUE BUSCA EN LA LISTA DE CONTACTOS UN CHAT EN ESPECIFICO////////77///////////////////////7
 function searchChat()
 {
 	var chatsList=document.getElementsByClassName("lista");
@@ -196,7 +193,7 @@ function searchChat()
 	    });
 	}, false);
 };
-//funcion que retorna la hora
+//////////////////////////////////////////////////////////////////FUNCION QUE RETORNA LA HORA EN UN FORMATO CORRECTO//77//////////////////////////////////77
 function getDateMessage()
 {
 	var horaActual;
@@ -218,7 +215,7 @@ function getDateMessage()
 	}
 	return horaActual;
 }
-////FUNCION QUE MANDA MENSAJES CADA VEZ QUE PRESIONAMOS ENTER
+/////////////////////////////////////////FUNCION QUE MANDA MENSAJES CADA VEZ QUE PRESIONAMOS ENTER//////////////////////////////////7
 function onMensajeKey(evt)
 {
 	if(evt.keyCode == 13)
@@ -232,7 +229,7 @@ function onMensajeKey(evt)
 		_mensajeInput.value='';
 	}
 }
-
+///////////////////////////////////////////////FUNCION QUE ACTUALIZA EL ULTIMO CHAT ////////////////////////////////////////////
 function actualizarUltimoChat(_contactName, _mensaje)
 {
 	var listaChats= document.getElementById("lista-chats");
@@ -240,25 +237,24 @@ function actualizarUltimoChat(_contactName, _mensaje)
 	//console.log(listaChats.getElementsByTagName("p")[0].textContent);
 	//console.log(listaChats.getElementsByClassName("time")[0].textContent)
 		
+		var ps = listaChats.getElementsByTagName("p");
+		var h4s = listaChats.getElementsByTagName("h4");
 	
-		for (var i=0; i< listaChats.childNodes.length;i++)
+		for (var i=0; i< ps.length;i++)
 		{
-			
-			if(listaChats.getElementsByTagName("h4")[i].textContent==_contactName)
+			if(h4s[i].textContent==_contactName)
 			{
-				console.log(_contactName);
+				for(x in dataListaChats)
+				{
+					if(dataListaChats[x].nombre==listaChats.getElementsByTagName("h4")[i].textContent)
+					{
+						listaChats.getElementsByTagName("p")[x].textContent=_mensaje;
+						listaChats.getElementsByClassName("time")[x].textContent=getDateMessage();
+						//listaChats.childNodes[i].childNodes[1].textContent= dataListaChats[x].getUltimaHora();
+					}
+				}
 			}
-			else
-			{
-				console.log("nada");
-			}
-		
+	
 		}
 }
-
-//FUNCION QUE CREA CHATS
-function crearChat(_mensaje)
-{
-
-	setEventsChatList();//actualiza los eventos de la lista de chats
-}
+/*****************************************************-----FIN----------************************************************************/
